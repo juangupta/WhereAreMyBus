@@ -5,8 +5,8 @@ namespace WhereAreMyBus.Models
 {
     public class Location
     {
-        [JsonProperty(PropertyName = "conductor")]
-        public string Conductor { get; set; }
+        [JsonProperty(PropertyName = "placa")]
+        public string Placa { get; set; }
         [JsonProperty(PropertyName = "latitud")]
         public float Latitud { get; set; }
         [JsonProperty(PropertyName = "longitud")]

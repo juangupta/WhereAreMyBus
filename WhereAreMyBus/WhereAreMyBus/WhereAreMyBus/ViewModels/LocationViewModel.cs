@@ -71,10 +71,14 @@ namespace WhereAreMyBus.ViewModels
                 return;
             }
 
-            //dynamic data = JObject.Parse((string)response.Result);
-            /*var list = ((IDictionary<string, JToken>)data).Select(k =>
-    JsonConvert.DeserializeObject<Location>(k.Value.ToString())).ToList();*/
+
+    //        dynamic data = JObject.Parse((string)response.Result);
+    //        var list = ((IDictionary<string, JToken>)data).Select(k =>
+    //JsonConvert.DeserializeObject<Location>(k.Value.ToString())).ToList();
+    //        ReloadPins(list);
             ReloadPins((List<Location>)response.Result);
+            
+
         }
 
         void ReloadPins(List<Location> locations)
@@ -82,13 +86,18 @@ namespace WhereAreMyBus.ViewModels
             Pins.Clear();
             foreach (var location in locations)
             {
-                var position = new Position(location.Latitud, location.Longitud);
-                Pins.Add(new Pin
+                if (location != null)
                 {
-                    Type = PinType.Generic,
-                    Position = position,
-                    Label = string.Format("Ruta: {0} - Conductor: {1} - Vehículo: {2}",location.Conductor, location.Vehiculo)
-                });
+                    var position = new Position(location.Latitud, location.Longitud);
+                    Pins.Add(new Pin
+                    {
+                        Type = PinType.Generic,
+                        Position = position,
+                        Label = string.Format("Placa: {0} - Vehículo: {1}", location.Placa, location.Vehiculo),
+                        Address = location.Ruta
+                    });
+                }
+                
             }
         }
         #endregion

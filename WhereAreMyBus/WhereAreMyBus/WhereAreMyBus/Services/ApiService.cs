@@ -36,8 +36,13 @@
 
                 var result = await response.Content.ReadAsStringAsync();
                 dynamic data = JObject.Parse((string)result);
-                var list = ((IDictionary<string, JToken>)data).Select(k =>
-        JsonConvert.DeserializeObject<T>(k.Value.ToString())).ToList();
+                        var list = ((IDictionary<string, JToken>)data).Select(k =>
+                JsonConvert.DeserializeObject<T>(k.Value.ToString())).ToList();
+                //List<T> list = new List<T>();
+                //foreach (var itemDynamic in data)
+                //{
+                //    list.Add(JsonConvert.DeserializeObject<T>(((JProperty)itemDynamic).Value.ToString()));
+                //}
                 return new Response
                 {
                     IsSuccess = true,
@@ -104,7 +109,7 @@
                 var client = new HttpClient();
                 //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
                 client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}/{2}", servicePrefix, controller);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
                 var response = await client.PutAsync(url, content);
 
                 if (!response.IsSuccessStatusCode)

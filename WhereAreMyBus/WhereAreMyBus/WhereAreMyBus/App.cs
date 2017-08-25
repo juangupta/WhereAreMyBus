@@ -12,7 +12,7 @@ namespace WhereAreMyBus
         public App()
         {
             // The root page of your application
-            MainPage = new LocationPage();
+            MainPage = new NavigationPage(new LocationPage());
         }
 
         protected override void OnStart()
