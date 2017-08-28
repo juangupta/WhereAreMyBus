@@ -3,17 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="WhereAreMyBus.Views.LocationPage"
+             xmlns:control="clr-namespace:WhereAreMyBus.Controls"
              Title="Mi Cootransda"
-             BackgroundColor ="Yellow"
+             
              BindingContext="{Binding Main, Source=Infraestructure.InstanceLocator}">
-  <maps:Map
-    WidthRequest="320"
-    HeightRequest="200"
-    x:Name="MyMap"
-    IsShowingUser="false"
-    MapType="Street">
-  </maps:Map>
-
+  <ContentPage.Content>
+    <StackLayout
+      Padding ="8"
+      BackgroundColor ="White"
+      BindingContext="{Binding Location}">
+      <control:BindablePicker
+                    Grid.Column="1"
+                    HeightRequest="40"
+                    Title="Seleccionar ruta ..."
+                    DisplayMemberPath="Address"
+                    SelectedValuePath="Address"
+                    TextColor="Black"
+                    BackgroundColor="White"
+                    ItemsSource="{Binding Pins}"
+                    SelectedValue="{Binding Path=Ruta , Mode=TwoWay}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center">
+      </control:BindablePicker>
+      <maps:Map
+          WidthRequest="330"
+          HeightRequest="200"
+          x:Name="MyMap"
+          IsShowingUser="true"
+          MapType="Street">
+      </maps:Map>
+    </StackLayout>    
+  </ContentPage.Content>  
   <ContentPage.ToolbarItems>
     <ToolbarItem
         Icon="ic_launcher.png"/>

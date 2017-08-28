@@ -1,12 +1,14 @@
 ﻿namespace WhereAreMyBus.Views
 {
     using Models;
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using ViewModels;
     using WhereAreMyBus.Services;
     using Xamarin.Forms;
     using Xamarin.Forms.Maps;
+    using Plugin.Toasts;
 
     public partial class LocationPage : ContentPage
     {
@@ -59,7 +61,7 @@
                     if (!LocationPage.CancellationToken.Token.IsCancellationRequested)
                     {
                         LocationPage.CancellationToken.Token.ThrowIfCancellationRequested();
-                        await trackLocation();
+                        //await trackLocation();
                         await ShowPoins();
                     }
                 });

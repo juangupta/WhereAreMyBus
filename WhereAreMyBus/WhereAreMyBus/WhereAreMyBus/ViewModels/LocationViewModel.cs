@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using WhereAreMyBus.Models;
@@ -11,8 +12,12 @@ using Xamarin.Forms.Maps;
 
 namespace WhereAreMyBus.ViewModels
 {
-    public class LocationViewModel
+    public class LocationViewModel:Location
     {
+        #region Events
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
         #region Attributes
         ApiService apiService;
         DialogService dialogService;
@@ -20,6 +25,7 @@ namespace WhereAreMyBus.ViewModels
 
         #region Properties
         public ObservableCollection<Pin> Pins { get; set; }
+
         #endregion
 
         #region Constructors
