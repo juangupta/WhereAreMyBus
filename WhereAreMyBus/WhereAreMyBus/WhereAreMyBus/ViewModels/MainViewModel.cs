@@ -7,6 +7,7 @@
 
         public MainViewModel()
         {
+            Location = new LocationViewModel();
         }
     }
 }

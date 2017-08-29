@@ -12,6 +12,7 @@ namespace WhereAreMyBus
         public App()
         {
             // The root page of your application
+            //InitializeComponent();
             MainPage = new NavigationPage(new LocationPage());
         }
 
