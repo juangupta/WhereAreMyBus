@@ -12,7 +12,7 @@
       Padding ="8"
       BackgroundColor ="White"
       BindingContext="{Binding Location}">
-      <control:BindablePicker
+      <!--<control:BindablePicker
                     Grid.Column="1"
                     HeightRequest="40"
                     Title="Seleccionar ruta ..."
@@ -24,7 +24,7 @@
                     SelectedValue="{Binding Path=Ruta , Mode=TwoWay}"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center">
-      </control:BindablePicker>
+      </control:BindablePicker>-->
       <maps:Map
           WidthRequest="330"
           HeightRequest="200"
